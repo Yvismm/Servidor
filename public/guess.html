@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Adivinhação</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="pagina">
+  <div id="container">
+    <h1>Adivinhe o número (0 a 99)</h1>
+
+    <input type="number" id="palpite" min="0" max="99">
+    <br>
+    <button onclick="verificar()">Tentar</button>
+
+    <p id="resultado"></p>
+  </div>
+
+  <script>
+    const numeroSecreto = Math.floor(Math.random() * 100);
+
+    function verificar() {
+      const palpite = Number(document.getElementById("palpite").value);
+      const resultado = document.getElementById("resultado");
+
+      if (palpite > numeroSecreto) {
+        resultado.innerText = "Errou! O número é menor.";
+        document.getElementById("pagina").style.setProperty("background-color", "red");
+      } else if (palpite < numeroSecreto) {
+        resultado.innerText = "Errou! O número é maior.";
+        document.getElementById("pagina").style.setProperty("background-color", "red");
+      } else {
+        resultado.innerText = "Acertou!";
+        document.getElementById("pagina").style.setProperty("background-color", "lightgreen");
+      }
+    }
+  </script>
+</body>
+</html>

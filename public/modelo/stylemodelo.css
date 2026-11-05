@@ -1,0 +1,101 @@
+.titulo{
+    background-color: bisque;
+    color: darkgreen;
+    padding: 100px;
+    text-align: center;
+    font-size: 50pt;
+}
+
+.fim{
+    background-color: bisque;
+    padding: 100px;
+    text-align: center;
+    font-size: 15pt;
+}
+
+body{
+    background-color: lightgray;
+}
+
+.yellow{
+    background-color: yellow;
+    display: inline-block;
+    text-align: center;
+    margin-left: 750px;
+}
+
+p{
+    color: indigo;
+    font-size: 20pt;
+    text-align: center;
+    font-family: sans-serif;
+    margin: 50px;
+}
+
+h2{
+    text-align: center;
+}
+
+.links{
+    background-color: lightskyblue;
+    color: darkred;
+    text-align: center;
+    font-size: 15pt;
+    padding-top: 50pt;
+    margin-bottom: 50px;
+}
+
+#links01{
+    margin-left: 125px;
+    margin-right: 125px;
+    margin-bottom: 125px;
+    color: darkred;
+}
+
+.img1{
+    position: absolute;
+    top: 50px;
+    left: 25px;
+}
+
+.img2{
+    position: absolute;
+    top: 50px;
+    right: 25px;
+}
+
+.livros{
+    position: relative;
+    margin-left: 400px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.livro01{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#tabela{
+    text-align: center;
+    margin-left: 800px;
+
+}
+
+#iframe{
+    text-align: center;
+    margin: 100px;
+    margin-left: 250px;
+}
+
+#img3{
+    position: absolute;
+    top: 2580px;
+    left: 25px;
+}
+
+#img4{
+    position: absolute;
+    top: 2580px;
+    right: 25px;
+}

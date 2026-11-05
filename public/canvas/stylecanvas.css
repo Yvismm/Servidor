@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+    background-color: rgb(22, 21, 21);
+    color: cyan;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+#canvas {
+    background-color: white;
+    border: 1px solid black;
+}
