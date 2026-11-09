@@ -1,7 +1,17 @@
 require("colors");
 let http = require("http");
 let express = require("express");
-let bodyParser = require("body-parser")
+let bodyParser = require("body-parser");
+var mongodb = require("mongodb");
+
+const MongoClient = mongodb.MongoClient;
+const uri = `mongodb://localhost:27017`;
+const client = new MongoClient(uri, { useNewUrlParser: true });
+
+var dbo = client.db("exemplo_bd");
+var usuarios = dbo.collection("usuarios");
+
+
 
 let app = express();
 app.use(express.static("./public"));
@@ -46,3 +56,21 @@ app.get("/cadastrar", function(req, res){
     
 
 })
+
+/////////////////////////////////////////
+
+app.post("/cadastrar_usuario", function(req, resp) {
+    var data = { 
+        db_nome: req.body.nome,
+        db_login: req.body.login,
+        db_senha: req.body.senha };
+
+    usuarios.insertOne(data, function (err) {
+      if (err) {
+        console.log(err);
+        resp.render('resposta_usuario.ejs', {resposta: "Erro ao cadastrar usuário!"})
+      }else {
+        resp.render('resposta_usuario.ejs', {resposta: "Usuário cadastrado com sucesso!"})        
+      };
+    });
+  });
