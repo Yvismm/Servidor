@@ -1,0 +1,19 @@
+body{
+    background-color: aqua;
+}
+
+div{
+    background-color: bisque;
+    padding: 10px;
+    margin: 10px;
+}
+
+section{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+h1{
+    text-align: center;
+}
