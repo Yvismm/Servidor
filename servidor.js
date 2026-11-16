@@ -75,6 +75,7 @@ app.post("/cadastrar_usuario", function(req, resp) {
     });
   });
 
+<<<<<<< HEAD
 app.post("/logar_usuario", function(req,res){
   let login = req.body.login;
   let senha = req.body.senha;
@@ -126,3 +127,28 @@ app.post("/remover_usuario", async function(req, res){
   }
 
 })
+=======
+app.post("/logar_usuario", function(req, resp) {
+  var data = {db_login: req.body.login, db_senha: req.body.senha };
+
+  usuarios.find(data).toArray(function(err, items) {
+    console.log(items);
+    if (items.length == 0) {
+        resp.render('resposta_usuario.ejs', {resposta: "Usuário/senha não encontrado!"})
+    }else if (err) {
+      resp.render('resposta_usuario.ejs', {resposta: "Erro ao logar usuário!"})
+    }else {
+      resp.render('resposta_usuario.ejs', {resposta: "Usuário logado com sucesso!"})        
+    };
+  });
+});
+  
+
+///////////////////////////////////////////////////
+
+
+app.get("/for", function(req,res){
+  let qtde = req.query.qtde;
+  res.render("for.ejs", {qtde});
+});
+>>>>>>> bd00225fb39e5082bcce821f31aa726e176e66cc
