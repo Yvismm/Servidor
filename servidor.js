@@ -74,3 +74,55 @@ app.post("/cadastrar_usuario", function(req, resp) {
       };
     });
   });
+
+app.post("/logar_usuario", function(req,res){
+  let login = req.body.login;
+  let senha = req.body.senha;
+
+  let data = {db_login: login, db_senha: senha}
+
+  usuarios.find(data).toArray(function(err, itens){
+    if(err) {
+      res.render('resposta_usuario.ejs', {resposta: "Erro ao Buscar usuário!"})
+    }else if(itens.length == 0){
+      res.render('resposta_usuario.ejs', {resposta: "Usuário/Senha não encontrado!"})
+    }else {
+      res.render('resposta_usuario.ejs', {resposta: "Usuário Logado Com Sucesso!"})
+    }
+  })
+})
+
+app.post("/editar_usuario", async function(req, res){
+  let login = req.body.login;
+  let senha = req.body.senha;
+  let novasenha = req.body.novasenha;
+
+  let data = {db_login: login, db_senha: senha};
+  let newdata = {$set: {db_senha: novasenha}}
+
+  const result = await usuarios.updateOne(data, newdata);
+  console.log(result);
+
+  if(result.matchedCount == 0){
+    res.render('resposta_usuario.ejs', {resposta: "Usuário/Senha não encontrado!"})
+  }else{
+    res.render('resposta_usuario.ejs', {resposta: "Senha atualizada com Sucesso!"})
+  }
+
+})
+
+app.post("/remover_usuario", async function(req, res){
+  let login = req.body.login;
+  let senha = req.body.senha;
+  let data = {db_login: login, db_senha: senha};
+
+  const result = await usuarios.deleteOne(data);
+  console.log(result);
+
+  if(result.deletedCount == 0){
+    res.render('resposta_usuario.ejs', {resposta: "Usuário/Senha não encontrado!"})
+  }else{
+    res.render('resposta_usuario.ejs', {resposta: "Usuário removido com sucesso!"})
+  }
+
+})
